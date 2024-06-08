@@ -5,6 +5,10 @@
 //  Created by Thierno Diallo on 3/16/24.
 //
 
+/*
+ The most common culprit is UI customization (like the color, shape and font of a button). A view controller needs to know what action to take when the button is pressed... but it doesn't need to dictate how the button looks. Another common example is number, date or string formatting. Overall, the view controller needs to know what to show and when to show it.
+ */
+
 import UIKit
 
 class SearchVC: UIViewController {
@@ -80,7 +84,7 @@ class SearchVC: UIViewController {
     @objc func pushFollowerListVC() {
         
         guard isUsernameEntered else {
-            print("No username")
+            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 🤢", buttonTitle: "Ok")
             return
         }
         
@@ -91,6 +95,8 @@ class SearchVC: UIViewController {
         navigationController?.pushViewController(followerListVC, animated: true)
         
     }
+    
+
 }
 
 extension SearchVC: UITextFieldDelegate {
